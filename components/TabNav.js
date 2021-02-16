@@ -9,6 +9,7 @@ import {Platform} from 'react-native';
 
 const TabNavComponent = () => {
     const isIOS = Platform.OS === "ios";
+    console.log(isIOS);
 
     const Tabs = isIOS
             ? createBottomTabNavigator()
@@ -21,7 +22,7 @@ const TabNavComponent = () => {
                 tabBarIcon: ({ color, size }) => {
                     switch (route.name) {
                         case "Decks": {
-                            return <MaterialCommunityIcons name="cards-outline" size={size} color={color} />
+                            return <MaterialCommunityIcons name="cards" size={size} color={color} />
                         }
                         case "Add Deck": {
                             return <FontAwesome name="plus-square" size={size} color={color} />
@@ -39,7 +40,7 @@ const TabNavComponent = () => {
                     backgroundColor: WHITE,
                 },
                 style: {
-                    height: isIOS ? 70 : 50,
+                    height: isIOS ? 80 : 50,
                     backgroundColor: BLUE,
                     shadowColor: "rgba(0, 0, 0, 0.24)",
                     shadowOffset: {
@@ -48,7 +49,15 @@ const TabNavComponent = () => {
                     },
                     shadowRadius: 6,
                     shadowOpacity: 1
-                }
+                },
+                labelStyle: {
+                    fontSize: 12,
+                },  
+                tabStyle: {
+                    marginTop: 5,
+                    marginBottom: 3
+                },  
+
             }}
         >
             <Tabs.Screen name="Decks" component={DeckList} />
