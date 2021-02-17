@@ -18,7 +18,3 @@ Mobile Flashcards is a mobile application for Android, iOS, and web that allows 
 - `yarn web` -- (`expo start:web`) Run the website in your browser.
 
 NOTE: This application is tested on Android Simulator, Motorola G (5S) plus and iPhone 11
-
-## Project Screenshots
-
-![Markdown Logo](/images/HomePage.png)
