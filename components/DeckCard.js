@@ -1,17 +1,29 @@
 import React from 'react'
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Animated, Easing, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {GRAY, BLUE, RED, BLACK} from "../utils/colors";
-import {connect} from 'react-redux';
 
-const DeckCard = ({ title, counts, id, navigation, disabled }) =>{
+const DeckCard = ({ title, counts, id, navigation, disabled }) => {
+    const fadeValue = new Animated.Value(0);
+
+    const startFade = () => {
+        Animated.timing(fadeValue, {
+            toValue: 1,
+            duration: 5000,
+            useNativeDriver: true,
+            easing: Easing.bezier(0, 1.19, 0.74, 1.2),
+        }).start();
+    }
     return (
         <View style={{alignItems: 'center'}}>
             <TouchableOpacity
                 disabled={disabled}
-                onPress={() => navigation.navigate(
-                    'DeckCardDetail',
-                    {id}
-                )}
+                onPress={() => {
+                    startFade();
+                    navigation.navigate(
+                        'DeckCardDetail',
+                        { id }
+                    )
+                }}
                 activeOpacity={0.5}
                 style={styles.item}>
                 <View style={styles.header}>
@@ -60,4 +72,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect()(DeckCard);
+export default DeckCard;
